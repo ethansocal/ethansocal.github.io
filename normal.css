@@ -1,5 +1,5 @@
 body {
-    background-image: linear-gradient(90, rgb(56, 239, 125), rgb(17, 153, 142));
+    background-image: linear-gradient(90deg, rgb(56, 239, 125), rgb(17, 153, 142));
 }
 
 h1 {
