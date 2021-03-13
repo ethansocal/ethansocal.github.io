@@ -4,8 +4,12 @@ body {
     color:black
 }
 
-@keyframes colorChanging {
-    
+@keyframes shadowChanging {
+    0% {filter: drop-shadow(10px 10px 5px black);}
+    25% {filter: drop-shadow(10px -10px 5px black);}
+    50% {filter: drop-shadow(-10px -10px 5px black);}
+    75% {filter: drop-shadow(-10px 10px 5px black);}
+    100% {filter: drop-shadow(10px 10px 5px black);}
 }
 
 .title > h1{
@@ -14,6 +18,10 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 6em;
     filter: drop-shadow(10px 10px 5px black);
+    animation-name: shadowChanging;
+    animation-duration: 4s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
 }
 
 .hidden {
