@@ -8,7 +8,17 @@ h1 {
     color:darkgreen;
     font-family: 'Open Sans', sans-serif;
     font-size: 6em;
+    
 }
 .title {
     text-transform: uppercase;
+}
+
+p {
+    display: none;
+}
+
+
+.title:hover p {
+    display: block;
 }
