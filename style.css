@@ -4,21 +4,23 @@ body {
     color:black
 }
 
-h1 {
-    color:darkgreen;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 6em;
+@keyframes colorChanging {
     
 }
-.title {
+
+.title > h1{
     text-transform: uppercase;
+    color:rgb(255, 0, 0);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 6em;
+    filter: drop-shadow(10px 10px 5px black);
 }
 
-p {
+.hidden {
     display: none;
 }
 
 
-.title:hover p {
+.title:hover .hidden {
     display: block;
 }
