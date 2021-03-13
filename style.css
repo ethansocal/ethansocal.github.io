@@ -15,7 +15,7 @@ body {
 .title > h1{
     text-transform: uppercase;
     color:rgb(255, 0, 0);
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'DotGothic16', sans-serif;;
     font-size: 6em;
     filter: drop-shadow(10px 10px 5px black);
     animation-name: shadowChanging;
