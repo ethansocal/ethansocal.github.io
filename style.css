@@ -1,9 +1,14 @@
 body {
+    background-color: darkturquoise;
     background-image: linear-gradient(90deg, rgb(56, 239, 125), rgb(17, 153, 142));
+    color:black
 }
 
 h1 {
     color:darkgreen;
     font-family: 'Open Sans', sans-serif;
-    font-size: 30em;
+    font-size: 6em;
+}
+.title {
+    text-transform: uppercase;
 }
