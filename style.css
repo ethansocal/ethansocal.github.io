@@ -27,12 +27,9 @@ body {
 .hidden {
     display: none;
 }
-
-.youtube-caption {
+#youtube-video {
     font-size: 30px;
-    text-align: center;
 }
-
 .title:hover .hidden {
     display: block !important;
 }
