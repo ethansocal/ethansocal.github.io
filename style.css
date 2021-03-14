@@ -15,12 +15,12 @@ body {
 .title h1 {
     text-transform: uppercase;
     color:rgb(255, 0, 0);
-    font-family: 'DotGothic16', sans-serif;;
+    font-family:'Ubuntu', sans-serif;
     font-size: 6em;
     filter: drop-shadow(10px 10px 5px black);
     animation-name: shadowChanging;
     animation-duration: 4s;
-    animation-timing-function: ease;
+    animation-timing-function: cubic-bezier(0, 0.75, 0.25, 1);;
     animation-iteration-count: infinite;
 }
 
@@ -28,7 +28,11 @@ body {
     display: none;
 }
 
+.youtube-caption {
+    font-size: 30px;
+    text-align: center;
+}
 
 .title:hover .hidden {
-    display: block;
+    display: block !important;
 }
