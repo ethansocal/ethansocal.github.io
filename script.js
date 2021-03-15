@@ -1,3 +1,3 @@
 $("#alert").click(function(){
-    alert("Hi")
+    alert("Hi");
 });
