@@ -15,19 +15,20 @@ body {
 .title h1 {
     text-transform: uppercase;
     width: inherit;
-    color:rgb(255, 0, 0);
+    color:red;
     font-family:'Ubuntu', sans-serif;
     font-size: 6em;
     filter: drop-shadow(10px 10px 5px black);
     animation: shadowChanging 4s infinite;
-    animation-timing-function: cubic-bezier(0, 0.75, 0.25, 1);
-    border-top: 8px solid black;
-    border-bottom: 8px solid black;
+    animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    border-top: 8px solid rgb(255, 255, 255);
+    border-bottom: 8px solid rgb(255, 255, 255);
+    border-radius: 8px;
 
 }
-
-.hidden {
-    display: none;
+h2 {
+    color:teal;
+    font-size: 4em;
 }
 #youtube-video {
     margin: 0 auto;
@@ -35,13 +36,10 @@ body {
     font-size: 30px;
     text-align: center;
 }
+
 #youtube-video iframe,
 #youtube-video figcaption {
     border-radius: 10px;
     border: 5px solid #73AD21;
     background-color: white;
-}
-
-.title:hover .hidden {
-    display: block !important;
 }
