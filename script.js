@@ -1,3 +1,4 @@
-$("#alert").click(function(){
-   $(".title h1").text("Hi");
+$("#button").click(function(){
+   $("#text").text("Hi");
+   console.log("hi")
 });
