@@ -42,7 +42,6 @@ var loop = setInterval(function() {
             } 
             
         }
-        console.log(timeNow)
         if (timeNow === "undefined") {
             console.log("nothing");
             if (time < parseInt(todaySchedule[0][1])*60+parseInt(todaySchedule[0][2])) {

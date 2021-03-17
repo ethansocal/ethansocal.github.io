@@ -24,6 +24,7 @@ h1 {
     border-top: 8px solid rgb(255, 255, 255);
     border-bottom: 8px solid rgb(255, 255, 255);
     border-radius: 8px;
+    animation-delay: 0.75s;
     transition: height 1s;
 }
 #time {
