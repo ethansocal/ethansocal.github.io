@@ -96,7 +96,7 @@ var loop = setInterval(function() {
         $("#timeRemaining").text(timeTill);
         console.log("New Remaining Time");
     }
-    if ($("#timeElapsed").text(timeElapsed)) {
+    if ($("#timeElapsed").text()) {
         $("#timeElapsed").text(timeElapsed);
         console.log("New Elapsed Time");
     }
