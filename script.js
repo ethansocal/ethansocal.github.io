@@ -93,11 +93,9 @@ var loop = setInterval(function() {
     }
     if ($("#timeRemaining").text() != timeTill) {
         $("#timeRemaining").text(timeTill);
-        console.log("New Remaining Time");
     }
     if ($("#timeElapsed").text() != timeElapsed) {
         $("#timeElapsed").text(timeElapsed);
-        console.log("New Elapsed Time");
     }
 }, 100);
 
