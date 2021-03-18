@@ -1,0 +1,11 @@
+{
+    "short_name": "School Schedule",
+    "name": "Newhart Middle School Schedule Helper",
+    "icons": [],
+    "start_url": "/schedule",
+    "display": "standalone",
+    "scope": "/",
+    "description": "Get the current period, the remaining time, and the elapsed time!",
+    "theme": "#1ca5b8",
+    "background_color": "#1ca5b8"
+}

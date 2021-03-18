@@ -23,7 +23,8 @@ body {
 }
 #time {
     overflow: hidden;
-    height: 0;
+    height: auto;
+    max-height: 0;
 }
 
 h1 {
@@ -39,11 +40,11 @@ h1 {
     border-bottom: 8px solid rgb(255, 255, 255);
     border-radius: 8px;
     animation-delay: 0.75s;
-    transition: height 1s;
+    transition: max-height 1s;
     height: auto;
 }
 #time.open {
-    height: auto !important;
+    max-height: 100px !important;
 }
 #time {
     text-align: center;
