@@ -130,15 +130,14 @@ var loop = setInterval(function() {
         timeTill = "No School!"
     }
     if ($("#time").html() != timeNow) {
-        
         console.log("New time");
-        previousHTML =  $("#time").html();
-        $("#time").html(timeNow)
-        var prevHeight = $("#time").css("height")
-        $("#time").html(previousHTML)
-        //$("#time").animate({height: "0"}, 200);
-        $("#time").html(timeNow)
-        //$("#time").animate({height: prevHeight.toString()}, 200);
+        if ($("#time").attr("class").includes("open")) {
+            $("#time").removeClass("open");
+        } else {
+            $("#time").html(timeNow)
+            $("#time").addClass("open");
+            
+        }
     }
     if ($("#timeRemaining").html() != timeTill) {
         $("#timeRemaining").html(timeTill);

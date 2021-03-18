@@ -40,7 +40,7 @@ h1 {
     border-bottom: 8px solid rgb(255, 255, 255);
     border-radius: 8px;
     animation-delay: 0.75s;
-    transition: max-height 1s;
+    transition: max-height 0.5s;
     height: auto;
 }
 #time.open {
