@@ -13,13 +13,11 @@ body {
     100% {filter: drop-shadow(10px 10px 5px black);}
 }
 @media only screen and (max-width: 600px) {
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-    }
+    
     h1 {
-        font-size: 4em;
+        font-size: 3em !important;
     } h2 {
-        font-size: 3em;
+        font-size: 4em !important;
     }
 }
 
@@ -61,7 +59,7 @@ h1 {
 
 h2 {
     color:teal;
-    font-size: 4em;
+    font-size: 6em;
 }
 #youtube-video {
     margin: 0 auto;

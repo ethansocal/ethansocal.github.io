@@ -64,7 +64,7 @@ var loop = setInterval(function() {
             } else if (time >= parseInt(todaySchedule[todaySchedule.length-1][3])*60+parseInt(todaySchedule[todaySchedule.length-1][4])) {
                 timeNow = "After School";
                 timeElapsed = "Do your HW or relax!";
-                timeTill = "After School";
+                timeTill = "No School";
             } else {
                 timeNow = "Passing Period!";
                 timeElapsed = "Passing Period!";
