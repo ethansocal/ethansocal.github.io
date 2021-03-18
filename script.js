@@ -1,4 +1,4 @@
-var mondaySchedule = "Period 0/5:9:45:10:28;Period 1/6:10:34:11:14;Break:11:14:11:21;Period 2/7:11:27:12:07;Period 3/8:12:13:12:53;Lunch:12:53:13:28;PAWS:13:34:13:59;Period 4/9:14:05:14:45";
+var mondaySchedule = "Period 0/5:9:45:10:28;Period 1/6:10:34:11:14;Break:11:14:11:21;Period 2/7:11:27:12:07;Period 3/8:12:13:12:53;Lunch:12:53:13:28;<a href='https%//drive.google.com/file/d/1yg_afS4BswjBJY-13YsUEICAQJTOwHh5/view'>PAWS</a>:13:34:13:59;Period 4/9:14:05:14:45";
 mondaySchedule = mondaySchedule.split(";");
 var normalSchedule = "Period 0/5:8:45:9:38;Period 1/6:9:45:10:34;Break:10:34:10:41;Period 2/7:10:48:11:37;Period 3/8:11:44:12:33;Lunch:12:33:13:08;<a href='https%//drive.google.com/file/d/1yg_afS4BswjBJY-13YsUEICAQJTOwHh5/view'>PAWS</a>:13:15:13:40;Period 4/9:13:47:14:35";
 normalSchedule = normalSchedule.split(";");
