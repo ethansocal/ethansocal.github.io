@@ -54,7 +54,14 @@ var loop = setInterval(function() {
                 timeNow = todaySchedule[timeNum][0] + " - " + todaySchedule[timeNum][1] + ":" +  todaySchedule[timeNum][2] + "~" + todaySchedule[timeNum][3] + ":" +  todaySchedule[timeNum][4];
                 timeElapsed = "Time Elapsed:<br>"+(time - (parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString()) + ":" + (now.getSeconds());
                 timeTill = "Time Remaining:<br>"+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
-                nextPeriod = todaySchedule[timeNum + 1][0]
+                try {
+                    nextPeriod = "Next: "+todaySchedule[parseInt(timeNum) + 1][0]
+                } catch {
+                    nextPeriod = "hide";
+                } finally {
+
+                }
+
                 break;
             } 
             
@@ -62,15 +69,16 @@ var loop = setInterval(function() {
         if (timeNow === "undefined") {
             if (time < parseInt(todaySchedule[0][1])*60+parseInt(todaySchedule[0][2])) {
                 timeNow = "Before School";
+                timeTill = "hide"
                 timeElapsed = "School Start: "+todaySchedule[0][1]+":"+todaySchedule[0][2];
             } else if (time >= parseInt(todaySchedule[todaySchedule.length-1][3])*60+parseInt(todaySchedule[todaySchedule.length-1][4])) {
                 timeNow = "After School";
-                timeElapsed = "Do your HW or relax!";
-                timeTill = "No School";
+                timeElapsed = "hide";
+                timeTill = "hide";
             } else {
-                timeNow = "Passing Period!";
-                timeElapsed = "Passing Period!";
-                timeTill = "Passing Period!";
+                timeNow = "hide";
+                timeElapsed = "hide";
+                timeTill = "hide";
             }
         }
     } else if (now.getDay() === 1) {
@@ -79,7 +87,13 @@ var loop = setInterval(function() {
             if (parseInt(todaySchedule[timeNum][1]) * 60 + parseInt(todaySchedule[timeNum][2]) <= time && parseInt(todaySchedule[timeNum][3]) * 60 + parseInt(todaySchedule[timeNum][4]) > time) {
                 timeNow = todaySchedule[timeNum][0] + " - " + todaySchedule[timeNum][1] + ":" +  todaySchedule[timeNum][2] + "~" + todaySchedule[timeNum][3] + ":" +  todaySchedule[timeNum][4];
                 timeElapsed = "Time Elapsed:<br>"+(time - parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString() + ":" + (now.getSeconds());
-                nextPeriod = todaySchedule[timeNum + 1][0]
+                try {
+                    nextPeriod = "Next: "+todaySchedule[parseInt(timeNum) + 1][0]
+                } catch {
+                    nextPeriod = "hide";
+                } finally {
+
+                }
                 timeTill = "Time Remaining:<br>"+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
                 break;
             } 
@@ -88,15 +102,16 @@ var loop = setInterval(function() {
         if (timeNow === "undefined") {
             if (time < parseInt(todaySchedule[0][1])*60+parseInt(todaySchedule[0][2])) {
                 timeNow = "Before School";
+                timeTill = "hide"
                 timeElapsed = "School Start: "+todaySchedule[0][1]+":"+todaySchedule[0][2];
             } else if (time >= parseInt(todaySchedule[todaySchedule.length-1][3])*60+parseInt(todaySchedule[todaySchedule.length-1][4])) {
                 timeNow = "After School";
-                timeElapsed = "Do your HW or relax!";
-                timeTill = "After School";
+                timeElapsed = "hide";
+                timeTill = "hide";
             } else {
-                timeNow = "Passing Period!";
-                timeElapsed = "Passing Period!";
-                timeTill = "Passing Period!";
+                timeNow = "Passing Period";
+                timeElapsed = "hide!";
+                timeTill = "hide";
             }
         }
     } else if (now.getDay() === 3 || now.getDay() == 5 || now.getDay() == 4 || now.getDay() == 2) {
@@ -106,7 +121,13 @@ var loop = setInterval(function() {
                 timeNow = todaySchedule[timeNum][0] + " - " + todaySchedule[timeNum][1] + ":" +  todaySchedule[timeNum][2] + "~" + todaySchedule[timeNum][3] + ":" +  todaySchedule[timeNum][4];
                 timeElapsed = "Time Elapsed:<br>"+(time - (parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString()) + ":" + (now.getSeconds());
                 timeTill = "Time Remaining:<br>"+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
-                nextPeriod = todaySchedule[(parseInt(timeNum) + 1)][0]
+                try {
+                    nextPeriod = "Next: "+todaySchedule[parseInt(timeNum) + 1][0]
+                } catch {
+                    nextPeriod = "hide";
+                } finally {
+
+                }
                 break;
             } 
             
@@ -114,15 +135,16 @@ var loop = setInterval(function() {
         if (timeNow === "undefined") {
             if (time < parseInt(todaySchedule[0][1])*60+parseInt(todaySchedule[0][2])) {
                 timeNow = "Before School";
+                timeTill = "hide"
                 timeElapsed = "School Start: "+todaySchedule[0][1]+":"+todaySchedule[0][2];
             } else if (time >= parseInt(todaySchedule[todaySchedule.length-1][3])*60+parseInt(todaySchedule[todaySchedule.length-1][4])) {
                 timeNow = "After School";
-                timeElapsed = "Do your HW or relax!";
-                timeTill = "After School";
+                timeElapsed = "hide";
+                timeTill = "hide";
             } else {
-                timeNow = "Passing Period!";
-                timeElapsed = "Passing Period!";
-                timeTill = "Passing Period!";
+                timeNow = "Passing Period";
+                timeElapsed = "hide";
+                timeTill = "hide";
             }
         }
    
@@ -130,7 +152,7 @@ var loop = setInterval(function() {
 
     } else {
         timeNow = "Weekend!"
-        timeElapsed = "Do your HW or relax!"
+        timeElapsed = "hide"
         timeTill = "No School!"
     }
     if ($("#time").html() != timeNow.replaceAll("'",'"').replaceAll("%",":")) {
@@ -143,14 +165,29 @@ var loop = setInterval(function() {
             
         }
     }
-    if ($("#timeRemaining").html() != timeTill) {
+    else if ($("#timeRemaining").html() != timeTill) {
         $("#timeRemaining").html(timeTill);
+        if (timeTill === "hide") {
+            $("#timeRemaining").hide();
+        } else {
+            $("#timeRemaining").show();
+        }
     }
     if ($("#timeElapsed").html() != timeElapsed) {
         $("#timeElapsed").html(timeElapsed);
+        if (timeElapsed === "hide") {
+            $("#timeElapsed").hide();
+        } else {
+            $("#timeElapsed").show();
+        }
     }
     if ($("#next").html() != nextPeriod) {
         $("#next").html(nextPeriod);
+        if (nextPeriod === "hide") {
+            $("#next").hide();
+        } else {
+            $("#next").show();
+        }
     }
 }, 500);
 
