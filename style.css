@@ -57,7 +57,7 @@ h1 {
 
 
 #timeRemaining,
-#timeElapsed {
+#timeElapsed, #next {
     margin: 50px;
     text-align: center;
     font-size: 5em;
