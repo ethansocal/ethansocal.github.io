@@ -51,8 +51,8 @@ var loop = setInterval(function() {
         for (timeNum in todaySchedule) {
             if (parseInt(todaySchedule[timeNum][1]) * 60 + parseInt(todaySchedule[timeNum][2]) <= time && parseInt(todaySchedule[timeNum][3]) * 60 + parseInt(todaySchedule[timeNum][4]) > time) {
                 timeNow = todaySchedule[timeNum][0];
-                timeElapsed = "Time Elapsed: "+(time - (parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString()) + ":" + (now.getSeconds());
-                timeTill = "Time Remaining: "+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
+                timeElapsed = "Time Elapsed:<br>"+(time - (parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString()) + ":" + (now.getSeconds());
+                timeTill = "Time Remaining:<br>"+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
                 break;
             } 
             
@@ -76,8 +76,8 @@ var loop = setInterval(function() {
         for (timeNum in todaySchedule) {
             if (parseInt(todaySchedule[timeNum][1]) * 60 + parseInt(todaySchedule[timeNum][2]) <= time && parseInt(todaySchedule[timeNum][3]) * 60 + parseInt(todaySchedule[timeNum][4]) > time) {
                 timeNow = todaySchedule[timeNum][0];
-                timeElapsed = "Time Elapsed: "+(time - parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString() + ":" + (now.getSeconds());
-                timeTill = "Time Remaining: "+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
+                timeElapsed = "Time Elapsed:<br>"+(time - parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString() + ":" + (now.getSeconds());
+                timeTill = "Time Remaining:<br>"+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
                 break;
             } 
             
@@ -101,8 +101,8 @@ var loop = setInterval(function() {
         for (timeNum in todaySchedule) {
             if (parseInt(todaySchedule[timeNum][1]) * 60 + parseInt(todaySchedule[timeNum][2]) <= time && parseInt(todaySchedule[timeNum][3]) * 60 + parseInt(todaySchedule[timeNum][4]) > time) {
                 timeNow = todaySchedule[timeNum][0];
-                timeElapsed = "Time Elapsed: "+(time - (parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString()) + ":" + (now.getSeconds());
-                timeTill = "Time Remaining: "+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
+                timeElapsed = "Time Elapsed:<br>"+(time - (parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString()) + ":" + (now.getSeconds());
+                timeTill = "Time Remaining:<br>"+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
                 break;
             } 
             
@@ -121,56 +121,9 @@ var loop = setInterval(function() {
                 timeTill = "Passing Period!";
             }
         }
-    } else if (now.getDay() === 1) {
-        var todaySchedule = mondaySchedule;
-        for (timeNum in todaySchedule) {
-            if (parseInt(todaySchedule[timeNum][1]) * 60 + parseInt(todaySchedule[timeNum][2]) <= time && parseInt(todaySchedule[timeNum][3]) * 60 + parseInt(todaySchedule[timeNum][4]) > time) {
-                timeNow = todaySchedule[timeNum][0];
-                timeElapsed = "Time Elapsed: "+(time - (parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString()) + ":" + (now.getSeconds());
-                timeTill = "Time Remaining: "+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
-                break;
-            } 
-            
-        }
-        if (timeNow === "undefined") {
-            if (time < parseInt(todaySchedule[0][1])*60+parseInt(todaySchedule[0][2])) {
-                timeNow = "Before School";
-                timeElapsed = "School Start: "+todaySchedule[0][1]+":"+todaySchedule[0][2];
-            } else if (time >= parseInt(todaySchedule[todaySchedule.length-1][3])*60+parseInt(todaySchedule[todaySchedule.length-1][4])) {
-                timeNow = "After School";
-                timeElapsed = "Do your HW or relax!";
-                timeTill = "After School";
-            } else {
-                timeNow = "Passing Period!";
-                timeElapsed = "Passing Period!";
-                timeTill = "Passing Period!";
-            }
-        }
-    } else if (now.getDay() === 1) {
-        var todaySchedule = mondaySchedule;
-        for (timeNum in todaySchedule) {
-            if (parseInt(todaySchedule[timeNum][1]) * 60 + parseInt(todaySchedule[timeNum][2]) <= time && parseInt(todaySchedule[timeNum][3]) * 60 + parseInt(todaySchedule[timeNum][4]) > time) {
-                timeNow = todaySchedule[timeNum][0];
-                timeElapsed = "Time Elapsed: "+(time - parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString() + ":" + (now.getSeconds());
-                timeTill = "Time Remaining: "+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
-                break;
-            } 
-            
-        }
-        if (timeNow === "undefined") {
-            if (time < parseInt(todaySchedule[0][1])*60+parseInt(todaySchedule[0][2])) {
-                timeNow = "Before School";
-                timeElapsed = "School Start: "+todaySchedule[0][1]+":"+todaySchedule[0][2];
-            } else if (time >= parseInt(todaySchedule[todaySchedule.length-1][3])*60+parseInt(todaySchedule[todaySchedule.length-1][4])) {
-                timeNow = "After School";
-                timeElapsed = "Do your HW or relax!";
-                timeTill = "After School";
-            } else {
-                timeNow = "Passing Period!";
-                timeElapsed = "Passing Period!";
-                timeTill = "Passing Period!";
-            }
-        }
+   
+        
+
     } else {
         timeNow = "Weekend!"
         timeElapsed = "Do your HW or relax!"
