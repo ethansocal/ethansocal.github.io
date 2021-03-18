@@ -45,7 +45,7 @@ var loop = setInterval(function() {
     var timeNow = "undefined";
     var timeTill = "never";
     var timeElapsed = "nothing";
-    var nextPeriod = "nothing";
+    var nextPeriod = "hide";
     var isMinimumDay = getMinimumDay();
     if (isMinimumDay ==="true") {
         var todaySchedule = minimumDaySchedule;
