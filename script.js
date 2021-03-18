@@ -130,8 +130,14 @@ var loop = setInterval(function() {
         timeTill = "No School!"
     }
     if ($("#time").html() != timeNow) {
-        $("#time").html(timeNow);
         console.log("New time");
+        if ($("#time").attr("class").includes("open")) {
+            $("#time").removeClass("open");
+        } else {
+            $("#time").html(timeNow)
+            $("#time").addClass("open");
+            
+        }
     }
     if ($("#timeRemaining").html() != timeTill) {
         $("#timeRemaining").html(timeTill);
@@ -139,7 +145,7 @@ var loop = setInterval(function() {
     if ($("#timeElapsed").html() != timeElapsed) {
         $("#timeElapsed").html(timeElapsed);
     }
-}, 100);
+}, 500);
 
 function minimumDay() {
     console.log("Cookie generated")
