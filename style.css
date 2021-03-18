@@ -5,6 +5,7 @@ body {
     font-family:'Times New Roman', Times, serif;
 }
 
+
 @keyframes shadowChanging {
     0% {filter: drop-shadow(10px 10px 5px black);}
     25% {filter: drop-shadow(10px -10px 5px black);}
@@ -20,7 +21,10 @@ body {
         font-size: 4em !important;
     }
 }
-
+#time {
+    overflow: hidden;
+    height: 0;
+}
 
 h1 {
     text-transform: uppercase;
@@ -36,6 +40,10 @@ h1 {
     border-radius: 8px;
     animation-delay: 0.75s;
     transition: height 1s;
+    height: auto;
+}
+#time.open {
+    height: auto !important;
 }
 #time {
     text-align: center;
