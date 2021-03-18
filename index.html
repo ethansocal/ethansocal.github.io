@@ -3,8 +3,6 @@
     <head>
         <!--Outside scripts and links-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <script src="https://kit.fontawesome.com/07ba5d2590.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -18,34 +16,35 @@
         </script>
         <!--Inside files and metadata-->
         <link rel="stylesheet" href="./style.css">
-        <link rel="shortcut icon" href="./favicon.ico">
+        <link rel="shortcut icon" href="./images/favicon.ico">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="ethan, ethansocal, ethan's random productions">
+        <meta name="keywords" content="newhart, newhart middle, newhart middle school, newhart school, schedule, school schedule, newhart school schedule, newhart schedule">
         <meta name="google-site-verification" content="mNbq3TzDca1aq5zB8BQsdWRsLZCD8noW0xuotsK4550">
-        <meta name="description" content="This is the developer hub for Ethan's Random Productions stuff.">
+        <meta name="description" content="This is the schedule helper for Newhart Middle School.">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="This is the developer hub for Ethan's Random Productions stuff.">
-        <meta property="og:image" content="https://ethansocal.github.io/Logo%20Transparent.png">
-        <meta property="og:title" content="Ethan's Developer Hub">
-        <meta property="og:url" content="ethansocal.github.io">
+        <meta property="og:description" content="This is the schedule helper for Newhart Middle School.">
+        <meta property="og:image" content="https://ethansocal.github.io/images/Logo%20Transparent.png">
+        <meta property="og:title" content="Newhart School Schedule">
+        <meta property="og:url" content="ethansocal.github.io/schedule">
         <meta property="og:image:width" content="1920">
         <meta property="og:image:height" content="1080">
         <meta property="fb:app_id" content="458436735601790">
         <meta property="author" content="Ethan Henry">
         <meta property="og:locale" content="en">
         <meta property="og:image:alt" content="Ethan's Random Productions logo.">
-        <title>Ethan's Developer Hub</title>
-        
+        <title>School Schedule</title>
+        <link rel="manifest" href="./manifest.json">
     </head>
     <body>
-        <div class="title">
-            <h1 id="text">Ethan's<br>Developer<br>Hub</h1>
+        <h2 style="text-align: center;border:white solid 5px; background-color:lightcoral;color: white;border-radius: 10px;">Newhart School Schedule</h2>
+        <div>
+            <h1 id="time" class="title"></h1>
+            <h1 id="timeRemaining" class="title"></h1>
+            <h1 id="timeElapsed" class="title"></h1>
         </div>
-        <h2>Projects</h2>
-        <figure id="youtube-video">
-            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/_byus6QIrT0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <figcaption>Ethan's Random Productions</figcaption>
-        </figure>
+        <!-- <button onclick="minimumDay()">Minimum Day</button>
+        <button onclick="unMinimumDay()">Not Minimum Day</button> -->
+        <script src="./script.js"></script>
     </body>
 </html>
