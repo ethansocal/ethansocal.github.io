@@ -1,6 +1,6 @@
 var mondaySchedule = "Period 0/5:9:45:10:28;Period 1/6:10:34:11:14;Break:11:14:11:21;Period 2/7:11:27:12:07;Period 3/8:12:13:12:53;Lunch:12:53:13:28;PAWS:13:34:13:59;Period 4/9:14:05:14:45";
 mondaySchedule = mondaySchedule.split(";");
-var normalSchedule = "Period 0/5:8:45:9:38;Period 1/6:9:45:10:34;Break:10:34:10:41;Period 2/7:10:48:11:37;Period 3/8:11:44:12:33;Lunch:12:33:13:08;<a href='https://drive.google.com/file/d/1yg_afS4BswjBJY-13YsUEICAQJTOwHh5/view'>PAWS</a>:13:15:13:40;Period 4/9:13:47:14:35";
+var normalSchedule = "Period 0/5:8:45:9:38;Period 1/6:9:45:10:34;Break:10:34:10:41;Period 2/7:10:48:11:37;Period 3/8:11:44:12:33;Lunch:12:33:13:08;<a href='https%//drive.google.com/file/d/1yg_afS4BswjBJY-13YsUEICAQJTOwHh5/view'>PAWS</a>:13:15:13:40;Period 4/9:13:47:14:35";
 normalSchedule = normalSchedule.split(";");
 var minimumDaySchedule = "Not Done!!!:0:1:23:58";
 minimumDaySchedule = minimumDaySchedule.split(";");
@@ -45,14 +45,16 @@ var loop = setInterval(function() {
     var timeNow = "undefined";
     var timeTill = "never";
     var timeElapsed = "nothing";
+    var nextPeriod = "nothing";
     var isMinimumDay = getMinimumDay();
     if (isMinimumDay ==="true") {
         var todaySchedule = minimumDaySchedule;
         for (timeNum in todaySchedule) {
             if (parseInt(todaySchedule[timeNum][1]) * 60 + parseInt(todaySchedule[timeNum][2]) <= time && parseInt(todaySchedule[timeNum][3]) * 60 + parseInt(todaySchedule[timeNum][4]) > time) {
-                timeNow = todaySchedule[timeNum][0];
+                timeNow = todaySchedule[timeNum][0] + " - " + todaySchedule[timeNum][1] + ":" +  todaySchedule[timeNum][2] + "~" + todaySchedule[timeNum][3] + ":" +  todaySchedule[timeNum][4];
                 timeElapsed = "Time Elapsed:<br>"+(time - (parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString()) + ":" + (now.getSeconds());
                 timeTill = "Time Remaining:<br>"+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
+                nextPeriod = todaySchedule[timeNum + 1][0]
                 break;
             } 
             
@@ -75,8 +77,9 @@ var loop = setInterval(function() {
         var todaySchedule = mondaySchedule;
         for (timeNum in todaySchedule) {
             if (parseInt(todaySchedule[timeNum][1]) * 60 + parseInt(todaySchedule[timeNum][2]) <= time && parseInt(todaySchedule[timeNum][3]) * 60 + parseInt(todaySchedule[timeNum][4]) > time) {
-                timeNow = todaySchedule[timeNum][0];
+                timeNow = todaySchedule[timeNum][0] + " - " + todaySchedule[timeNum][1] + ":" +  todaySchedule[timeNum][2] + "~" + todaySchedule[timeNum][3] + ":" +  todaySchedule[timeNum][4];
                 timeElapsed = "Time Elapsed:<br>"+(time - parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString() + ":" + (now.getSeconds());
+                nextPeriod = todaySchedule[timeNum + 1][0]
                 timeTill = "Time Remaining:<br>"+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
                 break;
             } 
@@ -103,6 +106,7 @@ var loop = setInterval(function() {
                 timeNow = todaySchedule[timeNum][0] + " - " + todaySchedule[timeNum][1] + ":" +  todaySchedule[timeNum][2] + "~" + todaySchedule[timeNum][3] + ":" +  todaySchedule[timeNum][4];
                 timeElapsed = "Time Elapsed:<br>"+(time - (parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString()) + ":" + (now.getSeconds());
                 timeTill = "Time Remaining:<br>"+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
+                nextPeriod = todaySchedule[(parseInt(timeNum) + 1)][0]
                 break;
             } 
             
@@ -129,12 +133,12 @@ var loop = setInterval(function() {
         timeElapsed = "Do your HW or relax!"
         timeTill = "No School!"
     }
-    if ($("#time").html() != timeNow) {
+    if ($("#time").html() != timeNow.replaceAll("'",'"').replaceAll("%",":")) {
         console.log("New time");
         if ($("#time").attr("class").includes("open")) {
             $("#time").removeClass("open");
         } else {
-            $("#time").html(timeNow)
+            $("#time").html(timeNow.replaceAll("%",":"))
             $("#time").addClass("open");
             
         }
@@ -144,6 +148,9 @@ var loop = setInterval(function() {
     }
     if ($("#timeElapsed").html() != timeElapsed) {
         $("#timeElapsed").html(timeElapsed);
+    }
+    if ($("#next").html() != nextPeriod) {
+        $("#next").html(nextPeriod);
     }
 }, 500);
 
