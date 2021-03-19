@@ -5,6 +5,14 @@ normalSchedule = normalSchedule.split(";");
 var minimumDaySchedule = "Not Done!!!:0:1:23:58";
 minimumDaySchedule = minimumDaySchedule.split(";");
 dummy1 = [];
+
+document.addEventListener('keydown', function(event){
+    if(event.ctrlKey && event.code === "Backquote") {
+        $("#devConsole").toggleClass("hidden");
+    }
+});
+  
+
 for (dummy3 in mondaySchedule){
     dummy1.push(mondaySchedule[dummy3].split(":"));
 }

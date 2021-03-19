@@ -55,6 +55,9 @@ h1 {
     color: cyan;
 }
 
+.hidden {
+    display: none !important;
+}
 
 #timeRemaining,
 #timeElapsed, #next {
