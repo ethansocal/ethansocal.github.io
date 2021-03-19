@@ -45,6 +45,12 @@
             <h1 id="next" class="title" style="display: none;"></h1>
             <h1 id="onlineOrOffline" class="title" style="display: none;"></h1>
         </div>
+        <p>Schedule Override<input list="schedules" name="scheduleOverride" id="override"></p>
+        <datalist id="schedules">
+            <option>Normal</option>
+            <option>Monday</option>
+        </datalist>
+        <button id="override" onclick="overrideSchedule()">Override</button>
         <div class="hidden" id="devConsole">
             <button onclick="minimumDay()">Minimum Day</button>
             <button onclick="unMinimumDay()">Not Minimum Day</button> 

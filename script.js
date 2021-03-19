@@ -5,13 +5,18 @@ normalSchedule = normalSchedule.split(";");
 var minimumDaySchedule = "Not Done!!!:0:1:23:58";
 minimumDaySchedule = minimumDaySchedule.split(";");
 dummy1 = [];
+override = undefined;
+
+function overrideSchedule() {
+    override = $("#override").val();
+}
+
 
 document.addEventListener('keydown', function(event) {
     if (event.ctrlKey && event.code === "Backquote") {
         $("#devConsole").toggleClass("hidden");
     }
 });
-
 
 for (dummy3 in mondaySchedule) {
     dummy1.push(mondaySchedule[dummy3].split(":"));
@@ -49,6 +54,7 @@ function getMinimumDay() {
 
 
 var loop = setInterval(function() {
+    console.log(override)
     now = new Date();
     time = now.getHours() * 60 + now.getMinutes();
     var timeNow = "hide";
@@ -101,7 +107,7 @@ var loop = setInterval(function() {
                 timeNow = "After School";
                 onlineOrOffline = "hide"
             } else {
-                timeNow = "error";
+                timeNow = "Passing Period";
             }
         }
     }
