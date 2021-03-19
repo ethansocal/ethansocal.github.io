@@ -50,119 +50,63 @@ function getMinimumDay() {
 var loop = setInterval(function() {
     now = new Date();
     time = now.getHours() * 60 + now.getMinutes();
-    var timeNow = "undefined";
-    var timeTill = "never";
-    var timeElapsed = "nothing";
-    var nextPeriod = "hide";
+    var timeNow = "hide";
+    var timeRemaining = "hide";
+    var timeElapsed = "hide";
+    var next = "hide";
     var isMinimumDay = getMinimumDay();
-    if (isMinimumDay ==="true") {
-        var todaySchedule = minimumDaySchedule;
-        for (timeNum in todaySchedule) {
-            if (parseInt(todaySchedule[timeNum][1]) * 60 + parseInt(todaySchedule[timeNum][2]) <= time && parseInt(todaySchedule[timeNum][3]) * 60 + parseInt(todaySchedule[timeNum][4]) > time) {
-                timeNow = todaySchedule[timeNum][0] + " - " + todaySchedule[timeNum][1] + ":" +  todaySchedule[timeNum][2] + "~" + todaySchedule[timeNum][3] + ":" +  todaySchedule[timeNum][4];
-                timeElapsed = "Time Elapsed:<br>"+(time - (parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString()) + ":" + (now.getSeconds());
-                timeTill = "Time Remaining:<br>"+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
-                try {
-                    nextPeriod = "Next: "+todaySchedule[parseInt(timeNum) + 1][0]
-                } catch {
-                    nextPeriod = "hide";
-                } finally {
-
-                }
-
-                break;
-            } 
-            
+    var todaySchedule = "Weekend!";
+    var onlineOrOffline = "hide";
+    if (isMinimumDay === "true") {
+        todaySchedule = minimumDaySchedule;
+        onlineOrOffline = "Everyone is online"
+    } else if (now.getDay() == 1) {
+        todaySchedule = mondaySchedule;
+        onlineOrOffline = "Everyone is online"
+    } else if (now.getDay() == 2 || now.getDay() == 3 || now.getDay() == 4 || now.getDay() == 5) {
+        todaySchedule = normalSchedule;
+        if (now.getDay() == 2 || now.getDay() == 4) {
+            onlineOrOffline = "Panther is in-person, and Pride is online."
+        } else if (now.getDay() == 3 || now.getDay() == 5){
+            onlineOrOffline = "Pride is in-person, and Panther is online."
         }
-        if (timeNow === "undefined") {
-            if (time < parseInt(todaySchedule[0][1])*60+parseInt(todaySchedule[0][2])) {
-                timeNow = "Before School";
-                timeTill = "hide"
-                timeElapsed = "School Start: "+todaySchedule[0][1]+":"+todaySchedule[0][2];
-            } else if (time >= parseInt(todaySchedule[todaySchedule.length-1][3])*60+parseInt(todaySchedule[todaySchedule.length-1][4])) {
-                timeNow = "After School";
-                timeElapsed = "hide";
-                timeTill = "hide";
-            } else {
-                timeNow = "hide";
-                timeElapsed = "hide";
-                timeTill = "hide";
-            }
-        }
-    } else if (now.getDay() === 1) {
-        var todaySchedule = mondaySchedule;
-        for (timeNum in todaySchedule) {
-            if (parseInt(todaySchedule[timeNum][1]) * 60 + parseInt(todaySchedule[timeNum][2]) <= time && parseInt(todaySchedule[timeNum][3]) * 60 + parseInt(todaySchedule[timeNum][4]) > time) {
-                timeNow = todaySchedule[timeNum][0] + " - " + todaySchedule[timeNum][1] + ":" +  todaySchedule[timeNum][2] + "~" + todaySchedule[timeNum][3] + ":" +  todaySchedule[timeNum][4];
-                timeElapsed = "Time Elapsed:<br>"+(time - parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString() + ":" + (now.getSeconds());
-                try {
-                    nextPeriod = "Next: "+todaySchedule[parseInt(timeNum) + 1][0]
-                } catch {
-                    nextPeriod = "hide";
-                } finally {
-
-                }
-                timeTill = "Time Remaining:<br>"+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
-                break;
-            } 
-            
-        }
-        if (timeNow === "undefined") {
-            if (time < parseInt(todaySchedule[0][1])*60+parseInt(todaySchedule[0][2])) {
-                timeNow = "Before School";
-                timeTill = "hide"
-                timeElapsed = "School Start: "+todaySchedule[0][1]+":"+todaySchedule[0][2];
-            } else if (time >= parseInt(todaySchedule[todaySchedule.length-1][3])*60+parseInt(todaySchedule[todaySchedule.length-1][4])) {
-                timeNow = "After School";
-                timeElapsed = "hide";
-                timeTill = "hide";
-            } else {
-                timeNow = "Passing Period";
-                timeElapsed = "hide!";
-                timeTill = "hide";
-            }
-        }
-    } else if (now.getDay() === 3 || now.getDay() == 5 || now.getDay() == 4 || now.getDay() == 2) {
-        var todaySchedule = normalSchedule;
-        for (timeNum in todaySchedule) {
-            if (parseInt(todaySchedule[timeNum][1]) * 60 + parseInt(todaySchedule[timeNum][2]) <= time && parseInt(todaySchedule[timeNum][3]) * 60 + parseInt(todaySchedule[timeNum][4]) > time) {
-                timeNow = todaySchedule[timeNum][0] + " - " + todaySchedule[timeNum][1] + ":" +  todaySchedule[timeNum][2] + "~" + todaySchedule[timeNum][3] + ":" +  todaySchedule[timeNum][4];
-                timeElapsed = "Time Elapsed:<br>"+(time - (parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString()) + ":" + (now.getSeconds());
-                timeTill = "Time Remaining:<br>"+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
-                try {
-                    nextPeriod = "Next: "+todaySchedule[parseInt(timeNum) + 1][0]
-                } catch {
-                    nextPeriod = "hide";
-                } finally {
-
-                }
-                break;
-            } 
-            
-        }
-        if (timeNow === "undefined") {
-            if (time < parseInt(todaySchedule[0][1])*60+parseInt(todaySchedule[0][2])) {
-                timeNow = "Before School";
-                timeTill = "hide"
-                timeElapsed = "School Start: "+todaySchedule[0][1]+":"+todaySchedule[0][2];
-            } else if (time >= parseInt(todaySchedule[todaySchedule.length-1][3])*60+parseInt(todaySchedule[todaySchedule.length-1][4])) {
-                timeNow = "After School";
-                timeElapsed = "hide";
-                timeTill = "hide";
-            } else {
-                timeNow = "Passing Period";
-                timeElapsed = "hide";
-                timeTill = "hide";
-            }
-        }
-   
-        
-
     } else {
         timeNow = "Weekend!"
-        timeElapsed = "hide"
-        timeTill = "No School!"
+        timeRemaining = "No School!"
+        onlineOrOffline = "hide";
     }
+    if (todaySchedule != "Weekend!") {
+        for (timeNum in todaySchedule) {
+            if (parseInt(todaySchedule[timeNum][1]) * 60 + parseInt(todaySchedule[timeNum][2]) <= time && parseInt(todaySchedule[timeNum][3]) * 60 + parseInt(todaySchedule[timeNum][4]) > time) {
+                timeNow = todaySchedule[timeNum][0] + " - " + todaySchedule[timeNum][1] + ":" +  todaySchedule[timeNum][2] + "~" + todaySchedule[timeNum][3] + ":" +  todaySchedule[timeNum][4];
+                timeElapsed = "Time Elapsed:<br>"+(time - (parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString()) + ":" + (now.getSeconds());
+                timeRemaining = "Time Remaining:<br>"+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
+                try {
+                    next = "Next: "+todaySchedule[parseInt(timeNum) + 1][0]
+                } catch {
+                    next = "hide";
+                }
+
+                break;
+            }
+            
+        }
+        if (timeNow === "hide") {
+            if (time < parseInt(todaySchedule[0][1])*60+parseInt(todaySchedule[0][2])) {
+                timeNow = "Before School";
+                timeRemaining = "Time Remaining:<br>"+((parseInt(todaySchedule[0][1])*60 + parseInt(todaySchedule[0][2])) - time - 1).toString() + ":" + (59 - now.getSeconds())
+                timeElapsed = "School Start: "+todaySchedule[0][1]+":"+todaySchedule[0][2];
+            } else if (time >= parseInt(todaySchedule[todaySchedule.length-1][3])*60+parseInt(todaySchedule[todaySchedule.length-1][4])) {
+                timeNow = "After School";
+                onlineOrOffline = "hide"
+            } else {
+                timeNow = "error";
+            }
+        }
+    }
+        
+
+    
     if ($("#time").html() != timeNow.replaceAll("'",'"').replaceAll("%",":")) {
         console.log("New time");
         if ($("#time").attr("class").includes("open")) {
@@ -173,9 +117,9 @@ var loop = setInterval(function() {
             
         }
     }
-    else if ($("#timeRemaining").html() != timeTill) {
-        $("#timeRemaining").html(timeTill);
-        if (timeTill === "hide") {
+    else if ($("#timeRemaining").html() != timeRemaining) {
+        $("#timeRemaining").html(timeRemaining);
+        if (timeRemaining === "hide") {
             $("#timeRemaining").hide();
         } else {
             $("#timeRemaining").show();
@@ -189,12 +133,20 @@ var loop = setInterval(function() {
             $("#timeElapsed").show();
         }
     }
-    if ($("#next").html() != nextPeriod) {
-        $("#next").html(nextPeriod);
-        if (nextPeriod === "hide") {
+    if ($("#next").html() != next) {
+        $("#next").html(next);
+        if (next === "hide") {
             $("#next").hide();
         } else {
             $("#next").show();
+        }
+    }
+    if ($("#onlineOrOffline").html() != onlineOrOffline) {
+        $("#onlineOrOffline").html(onlineOrOffline);
+        if (onlineOrOffline === "hide") {
+            $("#onlineOrOffline").hide();
+        } else {
+            $("#onlineOrOffline").show();
         }
     }
 }, 500);

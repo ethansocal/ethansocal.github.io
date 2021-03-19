@@ -3,6 +3,7 @@ body {
     background-image: linear-gradient(90deg, rgb(56, 239, 125), rgb(17, 153, 142));
     color:black;
     font-family:'Times New Roman', Times, serif;
+    text-align: center;
 }
 
 a {
@@ -54,13 +55,17 @@ h1 {
     text-align: center;
     color: cyan;
 }
-
+#onlineOrOffline {
+    font-size: 3em !important;
+}
 .hidden {
     display: none !important;
 }
 
 #timeRemaining,
-#timeElapsed, #next {
+#timeElapsed,
+#next,
+#onlineOrOffline {
     margin: 50px;
     text-align: center;
     font-size: 5em;
