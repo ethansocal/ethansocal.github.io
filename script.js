@@ -6,46 +6,47 @@ var minimumDaySchedule = "Not Done!!!:0:1:23:58";
 minimumDaySchedule = minimumDaySchedule.split(";");
 dummy1 = [];
 
-document.addEventListener('keydown', function(event){
-    if(event.ctrlKey && event.code === "Backquote") {
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && event.code === "Backquote") {
         $("#devConsole").toggleClass("hidden");
     }
 });
-  
 
-for (dummy3 in mondaySchedule){
+
+for (dummy3 in mondaySchedule) {
     dummy1.push(mondaySchedule[dummy3].split(":"));
 }
 mondaySchedule = dummy1;
 dummy1 = [];
-for (dummy3 in normalSchedule){
+for (dummy3 in normalSchedule) {
     dummy1.push(normalSchedule[dummy3].split(":"));
 }
 normalSchedule = dummy1;
 dummy1 = [];
-for (dummy3 in minimumDaySchedule){
+for (dummy3 in minimumDaySchedule) {
     dummy1.push(minimumDaySchedule[dummy3].split(":"));
 }
 minimumDaySchedule = dummy1;
 console.log(mondaySchedule);
 console.log(normalSchedule);
 console.log(minimumDaySchedule);
+
 function getMinimumDay() {
     var name = "minimumDay" + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
     }
     return "";
-  }
-  
+}
+
 
 var loop = setInterval(function() {
     now = new Date();
@@ -67,7 +68,7 @@ var loop = setInterval(function() {
         todaySchedule = normalSchedule;
         if (now.getDay() == 2 || now.getDay() == 4) {
             onlineOrOffline = "Panther is in-person, and Pride is online."
-        } else if (now.getDay() == 3 || now.getDay() == 5){
+        } else if (now.getDay() == 3 || now.getDay() == 5) {
             onlineOrOffline = "Pride is in-person, and Panther is online."
         }
     } else {
@@ -78,25 +79,25 @@ var loop = setInterval(function() {
     if (todaySchedule != "Weekend!") {
         for (timeNum in todaySchedule) {
             if (parseInt(todaySchedule[timeNum][1]) * 60 + parseInt(todaySchedule[timeNum][2]) <= time && parseInt(todaySchedule[timeNum][3]) * 60 + parseInt(todaySchedule[timeNum][4]) > time) {
-                timeNow = todaySchedule[timeNum][0] + " - " + todaySchedule[timeNum][1] + ":" +  todaySchedule[timeNum][2] + "~" + todaySchedule[timeNum][3] + ":" +  todaySchedule[timeNum][4];
-                timeElapsed = "Time Elapsed:<br>"+(time - (parseInt(todaySchedule[timeNum][1])* 60 + parseInt(todaySchedule[timeNum][2])).toString()) + ":" + (now.getSeconds());
-                timeRemaining = "Time Remaining:<br>"+((parseInt(todaySchedule[timeNum][3])*60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
+                timeNow = todaySchedule[timeNum][0] + " - " + todaySchedule[timeNum][1] + ":" + todaySchedule[timeNum][2] + "~" + todaySchedule[timeNum][3] + ":" + todaySchedule[timeNum][4];
+                timeElapsed = "Time Elapsed:<br>" + (time - (parseInt(todaySchedule[timeNum][1]) * 60 + parseInt(todaySchedule[timeNum][2])).toString()) + ":" + (now.getSeconds());
+                timeRemaining = "Time Remaining:<br>" + ((parseInt(todaySchedule[timeNum][3]) * 60 + parseInt(todaySchedule[timeNum][4])) - time - 1).toString() + ":" + (59 - now.getSeconds());
                 try {
-                    next = "Next: "+todaySchedule[parseInt(timeNum) + 1][0]
+                    next = "Next: " + todaySchedule[parseInt(timeNum) + 1][0]
                 } catch {
                     next = "hide";
                 }
 
                 break;
             }
-            
+
         }
         if (timeNow === "hide") {
-            if (time < parseInt(todaySchedule[0][1])*60+parseInt(todaySchedule[0][2])) {
+            if (time < parseInt(todaySchedule[0][1]) * 60 + parseInt(todaySchedule[0][2])) {
                 timeNow = "Before School";
-                timeRemaining = "Time Remaining:<br>"+((parseInt(todaySchedule[0][1])*60 + parseInt(todaySchedule[0][2])) - time - 1).toString() + ":" + (59 - now.getSeconds())
-                timeElapsed = "School Start: "+todaySchedule[0][1]+":"+todaySchedule[0][2];
-            } else if (time >= parseInt(todaySchedule[todaySchedule.length-1][3])*60+parseInt(todaySchedule[todaySchedule.length-1][4])) {
+                timeRemaining = "Time Remaining:<br>" + ((parseInt(todaySchedule[0][1]) * 60 + parseInt(todaySchedule[0][2])) - time - 1).toString() + ":" + (59 - now.getSeconds())
+                timeElapsed = "School Start: " + todaySchedule[0][1] + ":" + todaySchedule[0][2];
+            } else if (time >= parseInt(todaySchedule[todaySchedule.length - 1][3]) * 60 + parseInt(todaySchedule[todaySchedule.length - 1][4])) {
                 timeNow = "After School";
                 onlineOrOffline = "hide"
             } else {
@@ -104,20 +105,19 @@ var loop = setInterval(function() {
             }
         }
     }
-        
 
-    
-    if ($("#time").html() != timeNow.replaceAll("'",'"').replaceAll("%",":")) {
+
+
+    if ($("#time").html() != timeNow.replaceAll("'", '"').replaceAll("%", ":")) {
         console.log("New time");
         if ($("#time").attr("class").includes("open")) {
             $("#time").removeClass("open");
         } else {
-            $("#time").html(timeNow.replaceAll("%",":"))
+            $("#time").html(timeNow.replaceAll("%", ":"))
             $("#time").addClass("open");
-            
+
         }
-    }
-    else if ($("#timeRemaining").html() != timeRemaining) {
+    } else if ($("#timeRemaining").html() != timeRemaining) {
         $("#timeRemaining").html(timeRemaining);
         if (timeRemaining === "hide") {
             $("#timeRemaining").hide();
@@ -154,11 +154,11 @@ var loop = setInterval(function() {
 function minimumDay() {
     console.log("Cookie generated")
     var d = new Date();
-    d = new Date(d.getFullYear(),d.getMonth(), d.getDate(), 23, 59, 58)
-    var expires = "expires="+ d.toUTCString();
+    d = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 23, 59, 58)
+    var expires = "expires=" + d.toUTCString();
     document.cookie = "minimumDay" + "=" + "true" + ";" + expires + ";path=/";
 }
-  
+
 function unMinimumDay() {
     console.log("Cookie destroyed")
     document.cookie = "minimumDay=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
