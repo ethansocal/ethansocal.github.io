@@ -57,6 +57,10 @@ h1 {
 }
 #onlineOrOffline {
     font-size: 3em !important;
+    color:darkcyan;
+}
+#next {
+    color:darkorange;
 }
 .hidden {
     display: none !important;
