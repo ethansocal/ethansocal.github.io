@@ -45,11 +45,12 @@
             <h1 id="next" class="title" style="display: none;"></h1>
             <h1 id="onlineOrOffline" class="title" style="display: none;"></h1>
         </div>
-        <p>Schedule Override<input list="schedules" name="scheduleOverride" id="override"></p>
-        <datalist id="schedules">
-            <option>Normal</option>
-            <option>Monday</option>
-        </datalist>
+        <label for="scheduleOverride">Select today's schedule:</label>
+        <select id="scheduleOverride">
+            <option value="none">None</option>
+            <option value="monday">Monday</option>
+            <option value="normal">Normal</option>
+        </select>
         <button id="override" onclick="overrideSchedule()">Override</button>
         <div class="hidden" id="devConsole">
             <button onclick="minimumDay()">Minimum Day</button>

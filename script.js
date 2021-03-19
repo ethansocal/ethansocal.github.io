@@ -1,14 +1,29 @@
-var mondaySchedule = "Period 0/5:9:45:10:28;Period 1/6:10:34:11:14;Break:11:14:11:21;Period 2/7:11:27:12:07;Period 3/8:12:13:12:53;Lunch:12:53:13:28;<a href='https%//drive.google.com/file/d/1yg_afS4BswjBJY-13YsUEICAQJTOwHh5/view'>PAWS</a>:13:34:13:59;Period 4/9:14:05:14:45";
+var mondaySchedule = "Period 0/5:9:45:10:28;Period 1/6:10:34:11:14;Break:11:14:11:21;Period 2/7:11:27:12:07;Period 3/8:12:13:12:53;Lunch:12:53:13:28;<a target='_blank' href='https%//drive.google.com/file/d/1yg_afS4BswjBJY-13YsUEICAQJTOwHh5/view'>PAWS</a>:13:34:13:59;Period 4/9:14:05:14:45";
 mondaySchedule = mondaySchedule.split(";");
-var normalSchedule = "Period 0/5:8:45:9:38;Period 1/6:9:45:10:34;Break:10:34:10:41;Period 2/7:10:48:11:37;Period 3/8:11:44:12:33;Lunch:12:33:13:08;<a href='https%//drive.google.com/file/d/1yg_afS4BswjBJY-13YsUEICAQJTOwHh5/view'>PAWS</a>:13:15:13:40;Period 4/9:13:47:14:35";
+var normalSchedule = "Period 0/5:8:45:9:38;Period 1/6:9:45:10:34;Break:10:34:10:41;Period 2/7:10:48:11:37;Period 3/8:11:44:12:33;Lunch:12:33:13:08;<a target='_blank' href='https%//drive.google.com/file/d/1yg_afS4BswjBJY-13YsUEICAQJTOwHh5/view'>PAWS</a>:13:15:13:40;Period 4/9:13:47:14:35";
 normalSchedule = normalSchedule.split(";");
 var minimumDaySchedule = "Not Done!!!:0:1:23:58";
 minimumDaySchedule = minimumDaySchedule.split(";");
-dummy1 = [];
-override = undefined;
+var dummy1 = [];
+var override = undefined;
+
+function overrideCookie(cookie) {
+    console.log("Cookie generated")
+    var d = new Date();
+    d = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 23, 59, 58)
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = "override" + "=" + cookie + ";" + expires + ";path=/";
+}
+
+$(document).ready(function() {
+    override = getOverride();
+
+})
 
 function overrideSchedule() {
-    override = $("#override").val();
+    console.log($("#scheduleOverride").val());
+    override = $("#scheduleOverride").val();
+    overrideCookie(override);
 }
 
 
@@ -36,7 +51,7 @@ console.log(mondaySchedule);
 console.log(normalSchedule);
 console.log(minimumDaySchedule);
 
-function getMinimumDay() {
+function getOverride() {
     var name = "minimumDay" + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
@@ -54,19 +69,19 @@ function getMinimumDay() {
 
 
 var loop = setInterval(function() {
-    console.log(override)
+
     now = new Date();
     time = now.getHours() * 60 + now.getMinutes();
     var timeNow = "hide";
     var timeRemaining = "hide";
     var timeElapsed = "hide";
     var next = "hide";
-    var isMinimumDay = getMinimumDay();
     var todaySchedule = "Weekend!";
     var onlineOrOffline = "hide";
-    if (isMinimumDay === "true") {
-        todaySchedule = minimumDaySchedule;
-        onlineOrOffline = "Everyone is online"
+    if (override === "monday") {
+        todaySchedule = mondaySchedule;
+    } else if (override === "normal") {
+        todaySchedule = normalSchedule;
     } else if (now.getDay() == 1) {
         todaySchedule = mondaySchedule;
         onlineOrOffline = "Everyone is online"
