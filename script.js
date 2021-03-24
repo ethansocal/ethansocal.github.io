@@ -52,7 +52,7 @@ console.log(normalSchedule);
 console.log(minimumDaySchedule);
 
 function getOverride() {
-    var name = "minimumDay" + "=";
+    var name = "override" + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
     for (var i = 0; i < ca.length; i++) {
@@ -172,15 +172,3 @@ var loop = setInterval(function() {
     }
 }, 500);
 
-function minimumDay() {
-    console.log("Cookie generated")
-    var d = new Date();
-    d = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 23, 59, 58)
-    var expires = "expires=" + d.toUTCString();
-    document.cookie = "minimumDay" + "=" + "true" + ";" + expires + ";path=/";
-}
-
-function unMinimumDay() {
-    console.log("Cookie destroyed")
-    document.cookie = "minimumDay=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
-}
